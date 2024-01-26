@@ -3,8 +3,10 @@ import 'package:ecommerceapp/features/authentication/screens/Login/widgets/login
 import 'package:ecommerceapp/utils/halpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../common/widgets/form_divider.dart';
-import '../../../../common/widgets/social_buttons.dart';
+import '../../../../common/widgets.Login_Signup/form_divider.dart';
+import '../../../../common/widgets.Login_Signup/social_buttons.dart';
+
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

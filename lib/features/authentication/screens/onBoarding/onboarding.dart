@@ -8,6 +8,7 @@ import '../widgets/onboarding_next.dart';
 import '../widgets/onboarding_page.dart';
 import '../widgets/onboarding_skip.dart';
 
+
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 

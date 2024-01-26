@@ -1,46 +1,41 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/colors.dart';
+
 class TAppbarTheme {
   TAppbarTheme._();
 
 
      //    THIS IS THE LIGHT THEME  //
   static const lightAppBarTheme = AppBarTheme(
-      color: Colors.blue,
-      // Change the background color of the app bar
-      elevation: 3.0,
+      elevation:0,
       centerTitle: false,
-      // Change the elevation (shadow) of the app bar
       scrolledUnderElevation: 0,
-      // backgroundColor:Colors.transparent,
+
       surfaceTintColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
       iconTheme: IconThemeData(
-          color: Colors.black,
-          size: 24),
-      // Change the color of the icons on the app bar
-      actionsIconTheme: IconThemeData(color: Colors.black, size: 24),
+          color: TColors.black,
+          size:20),
+      actionsIconTheme: IconThemeData(color:TColors.black, size:20),
       titleTextStyle: TextStyle(
-          fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black)
+          fontSize: 18.0, fontWeight: FontWeight.w600, color: TColors.black)
   );
 
 
   //     THIS IS THE DARK THEME
   static const darkAppBarTheme = AppBarTheme(
-      color: Colors.blue,
-      // Change the background color of the app bar
-      elevation: 3.0,
+      elevation:0,
       centerTitle: false,
-      // Change the elevation (shadow) of the app bar
       scrolledUnderElevation: 0,
-      // backgroundColor:Colors.transparent,
+      backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       iconTheme: IconThemeData(
-          color: Colors.white,
-          size: 24),
+          color: TColors.white,
+          size: 20),
       // Change the color of the icons on the app bar
-      actionsIconTheme: IconThemeData(color: Colors.white, size: 24),
+      actionsIconTheme: IconThemeData(color: TColors.white, size: 20),
       titleTextStyle: TextStyle(
-          fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white)
+          fontSize: 18.0, fontWeight: FontWeight.w600, color: TColors.white)
   );
-
 }
