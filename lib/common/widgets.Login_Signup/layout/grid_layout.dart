@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../Products_cart/product_card_vetical.dart';
 class TGridLayout extends StatelessWidget {
   const TGridLayout({
     super.key,
     required this.itemCount,
-    this.mainAxisExtent= 288,
+    this.mainAxisExtent = 270,
     required this.itemBuilder,
   });
 
@@ -23,7 +21,7 @@ class TGridLayout extends StatelessWidget {
         gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing:16,crossAxisSpacing: 16,
           mainAxisExtent:mainAxisExtent,
-          crossAxisCount:1,
+          crossAxisCount:2,
         ),
         itemBuilder:itemBuilder,
     );

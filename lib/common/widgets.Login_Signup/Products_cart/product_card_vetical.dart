@@ -8,6 +8,7 @@ import '../images/t_Rounded_image.dart';
 import '../texts/product_title_text.dart';
 
 import '../../../common/shadow.dart';
+import '../texts/t_brand_title_and_verify.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({Key? key}) : super(key: key);
@@ -64,52 +65,51 @@ class TProductCardVertical extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
+              const Padding(
+                padding: EdgeInsets.only(left: 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TProductTitleText(
+                    TProductTitleText(
+
                       title: "Adidas New sale",
                       smallSize: true,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          "Adidas",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context).textTheme.subtitle1,
-                        ),
-                        const SizedBox(width: 5),
-                        const Icon(Iconsax.verify, color: TColors.primaryColor, size: 20),
-                      ],
-                    ),
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const TProductPriceText(price: '35',),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color:Colors.blue,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
-                          ),
-                          child: const SizedBox(
-                            width: 30,
-                            height: 30,
-                            child: Center(
-                              child: Icon(Iconsax.add, color: TColors.white, size: 20),
-                            ),
-                          ),
-                        ),
+                        TBrandTitleWithVerifiedIcon(title:"Adidas",),
+                        SizedBox(width: 5),
+                        Icon(Iconsax.verify, color: TColors.primaryColor, size: 20),
                       ],
                     ),
                   ],
                 ),
+              ),
+
+              Spacer(),
+              /// Price ans Button
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const TProductPriceText(price: '35',),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color:Colors.blue,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                    ),
+                    child: const SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: Center(
+                        child: Icon(Iconsax.add, color: TColors.white, size: 20),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -118,4 +118,5 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
+
 

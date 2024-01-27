@@ -12,12 +12,14 @@ class TSearchController extends StatelessWidget {
     this.showBackground = true,
     this.showBorder = true,
     this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal:16),
   });
 
   final String text;
   final IconData icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class TSearchController extends StatelessWidget {
     return GestureDetector(
       onTap:onTap,
       child: Padding(
-          padding:EdgeInsets.symmetric(horizontal:16),
+          padding:padding,
           child:Container(width:double.infinity,padding: const EdgeInsets.all(13),
               decoration:BoxDecoration(
                   color:showBackground? dark ? TColors.dark: TColors.light:Colors.transparent,
