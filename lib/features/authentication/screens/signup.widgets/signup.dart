@@ -2,7 +2,6 @@ import 'package:ecommerceapp/common/widgets.Login_Signup/form_divider.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/social_buttons.dart';
 import 'package:ecommerceapp/features/authentication/screens/signup.widgets/signup_form.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../../utils/halpers/helper_function.dart';
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});

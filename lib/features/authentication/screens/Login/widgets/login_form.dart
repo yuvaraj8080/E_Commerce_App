@@ -43,7 +43,7 @@ class TLoginForm extends StatelessWidget {
 
               ///  Forget Password
               TextButton(
-                  onPressed: ()=> Get.to(()=>ForgetPassword()), child: const Text("Forget Password")),
+                  onPressed: ()=> Get.to(()=>const ForgetPassword()), child: const Text("Forget Password")),
             ]),
             const SizedBox(height: 16),
 
@@ -51,7 +51,7 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: ()=>Get.off(()=>NavigationMenu()), child: const Text("Sign Up"))),
+                    onPressed: ()=>Get.off(()=>const NavigationMenu()), child: const Text("Sign Up"))),
 
             const SizedBox(height: 16),
 

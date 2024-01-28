@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           ///    Divider
           TFormDivider(dark: dark),
 
-          SizedBox(height: 16,),
+          const SizedBox(height: 16,),
           ///  Footer Social Buttons
           const TSocialButtons()
         ]),

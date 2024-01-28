@@ -72,10 +72,10 @@ class TSignupForm extends StatelessWidget {
             Text(" Term of use",style:Theme.of(context).textTheme.bodyMedium!.apply(
                 color: dark? TColors.primaryColor :Colors.blueAccent)),
           ]),
-          SizedBox(height:10),
+          const SizedBox(height:10),
 
           ///Sign Up Button / Create Account button
-          SizedBox(width:double.infinity,child:ElevatedButton(onPressed:(){Get.to(VerifyEmailScreen());},child:Text("Create Account")))
+          SizedBox(width:double.infinity,child:ElevatedButton(onPressed:(){Get.to(const VerifyEmailScreen());},child:const Text("Create Account")))
         ]
     ));
   }

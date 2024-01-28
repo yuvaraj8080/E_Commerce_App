@@ -21,7 +21,7 @@ class TSocialButtons extends StatelessWidget {
                 height: 30,
                 image: AssetImage("assets/logos/googleLogo.png"))),
       ),
-      SizedBox(width: 15),
+      const SizedBox(width: 15),
       Container(
         decoration: BoxDecoration(
             border: Border.all(color: TColors.grey),

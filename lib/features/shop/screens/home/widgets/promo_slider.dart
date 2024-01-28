@@ -8,8 +8,8 @@ import '../../../controllers/home_screenController.dart';
 
 class TPromoSlider extends StatelessWidget {
   const TPromoSlider({
-    Key? key, required this.banners,
-  }) : super(key: key);
+    super.key, required this.banners,
+  });
 
   final List<String> banners;
 
@@ -34,7 +34,7 @@ class TPromoSlider extends StatelessWidget {
                 TCircularContainer(
                   width: 20,
                   height: 5,
-                  margin: EdgeInsets.only(right: 8),
+                  margin: const EdgeInsets.only(right: 8),
                   backgroundColor: controller.carousalCurrentIndex.value == i
                       ? TColors.primaryColor
                       : TColors.grey,

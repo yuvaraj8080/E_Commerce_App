@@ -5,7 +5,7 @@ import '../../../../utils/constants/colors.dart';
 import '../../../../utils/halpers/helper_function.dart';
 
 class TSearchController extends StatelessWidget {
-  TSearchController({
+  const TSearchController({
     super.key,
     required this.text,
      this.icon = Iconsax.search_normal,

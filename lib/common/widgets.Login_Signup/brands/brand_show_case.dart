@@ -19,7 +19,7 @@ class TBranShowcase extends StatelessWidget {
         showBorder:true,
         borderColor:TColors.darkGrey,
         backgroundColor: Colors.transparent,
-        padding:EdgeInsets.all(8),
+        padding:const EdgeInsets.all(8),
 
         child: Column(children:[
           ///------BRAND WITH PRODUCT COUNT -------
@@ -37,8 +37,8 @@ class TBranShowcase extends StatelessWidget {
   Widget brandTopProductImageWidget(String image, context){
     return Expanded(
         child: TRoundedContainer(
-          height: 100, padding: EdgeInsets.all(8),
-          margin:EdgeInsets.all(8),
+          height: 100, padding: const EdgeInsets.all(8),
+          margin:const EdgeInsets.all(8),
           backgroundColor: THelperFunction.isDarkMode(context)? TColors.darkGrey : TColors.light, radius:16,
           child: Image(fit: BoxFit.contain, image:AssetImage(image)),
         )

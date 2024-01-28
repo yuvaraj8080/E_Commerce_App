@@ -5,8 +5,8 @@ import '../../../utils/halpers/helper_function.dart';
 import '../texts/section_heading.dart';
 
 class THomeCategories extends StatelessWidget {
-  THomeCategories({
-    super.key, required this.image, required this.title,  this.textColor = TColors.white, this.backgroundColor = TColors.white, this.onTap,
+  const THomeCategories({
+    super.key, required this.image, required this.title,  this.textColor = TColors.white, this.backgroundColor , this.onTap,
   });
 
   final String  image,title;

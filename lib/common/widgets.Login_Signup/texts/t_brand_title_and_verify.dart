@@ -7,14 +7,14 @@ import '../../../utils/constants/enums_dart.dart';
 
 class TBrandTitleWithVerifiedIcon extends StatelessWidget {
   const TBrandTitleWithVerifiedIcon({
-    Key? key,
+    super.key,
     this.color,
     required this.title,
     this.maxLines = 1,
     this.textAlign = TextAlign.center,
     this.brandTextSize = TextSizes.small,
     this.icon,
-  }) : super(key: key);
+  });
 
   final Color? color;
   final String title;
@@ -34,17 +34,17 @@ class TBrandTitleWithVerifiedIcon extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           maxLines: maxLines,
           style: brandTextSize == TextSizes.small
-              ? Theme.of(context).textTheme.subtitle1!.apply(color: color)
+              ? Theme.of(context).textTheme.titleMedium!.apply(color: color)
               : brandTextSize == TextSizes.medium
-              ? Theme.of(context).textTheme.headline6!.apply(color: color)
+              ? Theme.of(context).textTheme.titleLarge!.apply(color: color)
               : brandTextSize == TextSizes.large
               ? Theme.of(context)
               .textTheme
-              .headline5!
+              .headlineSmall!
               .apply(color: color)
               : Theme.of(context)
               .textTheme
-              .bodyText2!
+              .bodyMedium!
               .apply(color: color),
         ),
         const SizedBox(width:5),

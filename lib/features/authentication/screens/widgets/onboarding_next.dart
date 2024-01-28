@@ -17,9 +17,9 @@ class onBoardingNextButton extends StatelessWidget {
         right:25,
         bottom:kToolbarHeight,
         child:ElevatedButton(style: ElevatedButton.styleFrom(
-            shape:CircleBorder(),shadowColor:Colors.white,elevation:2 ,
+            shape:const CircleBorder(),shadowColor:Colors.white,elevation:2 ,
             backgroundColor: dark? TColors.primaryColor : Colors.black),
             onPressed:() => onBordingController.instance.nextPage(),
-            child:Icon(Iconsax.arrow_right_3)));
+            child:const Icon(Iconsax.arrow_right_3)));
   }
 }

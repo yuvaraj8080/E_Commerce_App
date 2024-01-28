@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
 
         ///  SearchBar In the Home Screen
         const SizedBox(height: 30),
-        TSearchController(text: "Search in Store", icon: Iconsax.search_normal),
+        const TSearchController(text: "Search in Store", icon: Iconsax.search_normal),
 
         const SizedBox(height: 20),
 
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               TGridLayout(itemBuilder: (BuildContext , int )=> const TProductCardVertical(), itemCount: 4,)
             ],
           ),
-      )
+      ),
     ])));
   }
 }

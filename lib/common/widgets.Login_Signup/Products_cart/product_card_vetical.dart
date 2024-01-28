@@ -11,13 +11,14 @@ import '../../../common/shadow.dart';
 import '../texts/t_brand_title_and_verify.dart';
 
 class TProductCardVertical extends StatelessWidget {
-  const TProductCardVertical({Key? key}) : super(key: key);
+  const TProductCardVertical({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
 
     return Card(
+      elevation:3,shadowColor:dark? Colors.white : Colors.black,
       child: GestureDetector(
         onTap: () {},
         child: Container(
@@ -87,7 +88,7 @@ class TProductCardVertical extends StatelessWidget {
                 ),
               ),
 
-              Spacer(),
+              const Spacer(),
               /// Price ans Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,12 +1,10 @@
 import 'package:ecommerceapp/common/widgets.Login_Signup/Products_cart/cart_menu_icon.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/appBar/appbar.dart';
-import 'package:ecommerceapp/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/custom_shapes/container/search_Container.dart.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/layout/grid_layout.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
 import 'package:ecommerceapp/features/shop/screens/store/widget/category_tab.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../common/widgets.Login_Signup/Products_cart/TBrandCard.dart';
 import '../../../../common/widgets.Login_Signup/appBar/tabbar.dart';
 import '../../../../utils/constants/colors.dart';
@@ -36,14 +34,14 @@ class StoreScreen extends StatelessWidget {
                         : TColors.white,
                     expandedHeight: 350,
                     flexibleSpace: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: ListView(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             children: [
                               ///  ----- Search Bar ---------
                               const SizedBox(height: 16),
-                              TSearchController(
+                              const TSearchController(
                                 text: "Search in Store",
                                 showBackground: false,
                                 showBorder: true,
