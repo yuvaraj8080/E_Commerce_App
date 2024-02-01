@@ -1,7 +1,9 @@
 import 'package:ecommerceapp/common/widgets.Login_Signup/Products_cart/product_price_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../features/shop/screens/product_details/product_detail.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/halpers/helper_function.dart';
 import '../images/t_Rounded_image.dart';
@@ -20,7 +22,7 @@ class TProductCardVertical extends StatelessWidget {
     return Card(
       elevation:3,shadowColor:dark? Colors.white : Colors.black,
       child: GestureDetector(
-        onTap: () {},
+        onTap: ()=> Get.to(()=>const ProductDetailScreen()),
         child: Container(
           height: 260,
           width: 180,
@@ -106,7 +108,7 @@ class TProductCardVertical extends StatelessWidget {
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Icon(Iconsax.add, color: TColors.white, size: 20),
+                        child: Icon(Iconsax.add, color: TColors.white, size:20),
                       ),
                     ),
                   ),
