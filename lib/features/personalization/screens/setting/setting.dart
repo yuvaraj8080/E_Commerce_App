@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/custom_shapes/curved_edges.dart/primary_header_controller.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
+import 'package:ecommerceapp/features/personalization/screens/address/address.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -38,7 +39,7 @@ class SettingScreen extends StatelessWidget {
               child:Column(children:[
                 const TSectionHeading(title:"Account Setting",showActionButton: false),
                 const SizedBox(height:8),
-                TSettingMenuTile(icon:Iconsax.safe_home, title:"My Address", subTitle:"Set shopping delivery address",onTap:(){}),
+                TSettingMenuTile(icon:Iconsax.safe_home, title:"My Address", subTitle:"Set shopping delivery address",onTap:()=> Get.to((const UserAddressScreen()))),
                 TSettingMenuTile(icon:Iconsax.shopping_cart, title:"My Cart", subTitle:"Add, remove products and move to checkout",onTap:(){}),
                 TSettingMenuTile(icon:Iconsax.bag_tick, title:"My Orders", subTitle:"In-progress and Completed Orders",onTap:(){}),
                 TSettingMenuTile(icon:Iconsax.bank, title:"My Account", subTitle:"Withdraw balance to registered bank account",onTap:(){}),

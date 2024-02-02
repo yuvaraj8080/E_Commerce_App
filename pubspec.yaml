@@ -46,6 +46,7 @@ dependencies:
   date_time_format:
   carousel_slider:
   readmore: ^2.2.0
+  flutter_rating_bar:
 
   flutter_native_splash: ^2.3.9
 

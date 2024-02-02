@@ -22,11 +22,11 @@ class TBottomAndToCart extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Iconsax.add,size:40,color:TColors.white),
-              SizedBox(width:8),
+              const Icon(Iconsax.add,size:40,color:TColors.darkGrey),
+              const SizedBox(width:8),
               Text("2",style:Theme.of(context).textTheme.titleSmall),
               const SizedBox(width:10),
-              Icon(Iconsax.add,size:40,color:TColors.white),
+              const Icon(Iconsax.add,size:40,color:TColors.darkGrey),
             ],
           ),
           ElevatedButton(onPressed: (){}, child:Text("Add to Cart")),

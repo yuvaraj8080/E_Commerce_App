@@ -6,7 +6,9 @@ import 'package:ecommerceapp/features/shop/screens/product_details/widget/Tbotto
 import 'package:ecommerceapp/features/shop/screens/product_details/widget/product_detailimage_slider.dart';
 import 'package:ecommerceapp/features/shop/screens/product_details/widget/product_mata_data.dart';
 import 'package:ecommerceapp/features/shop/screens/product_details/widget/rating_shere_widget.dart';
+import 'package:ecommerceapp/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import '../../../../utils/halpers/helper_function.dart';
@@ -92,8 +94,8 @@ class ProductDetailScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TSectionHeading(title:"Reviews(199",onPressed:(){}),
-                        IconButton(onPressed:(){}, icon:Icon(Iconsax.arrow_right_3,size:15)),
+                        TSectionHeading(title:"Reviews(199)",onPressed:(){},showActionButton:false,),
+                        IconButton(onPressed:()=>Get.to(()=>const ProductReviewScreen()), icon:Icon(Iconsax.arrow_right_3,size:15)),
 
                       ],
                     ),
