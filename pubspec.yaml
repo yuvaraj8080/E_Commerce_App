@@ -47,8 +47,15 @@ dependencies:
   carousel_slider:
   readmore: ^2.2.0
   flutter_rating_bar:
-
   flutter_native_splash: ^2.3.9
+
+
+# Firebase dependencies
+  firebase_auth: ^4.17.3
+  firebase_core: ^2.25.3
+  cloud_firestore: ^4.15.3
+  firebase_database: ^10.4.4
+
 
 
 
