@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/onboardingcontroller.dart';
+import '../../controllers/onboarding/onboardingcontroller.dart';
 import '../widgets/onBoarding_dot_navigation.dart';
 import '../widgets/onboarding_next.dart';
 import '../widgets/onboarding_page.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../screens/Login/login.dart';
+import '../../screens/Login/login.dart';
 class onBordingController extends GetxController{
   static onBordingController get instance => Get.find();
 

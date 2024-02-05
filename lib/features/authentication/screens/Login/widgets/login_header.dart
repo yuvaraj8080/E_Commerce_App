@@ -12,10 +12,10 @@ class TLoginHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Image(
-        height: 150,
+        height: 180,
         image: AssetImage(dark
-            ? "assets/logos/lightSplashLogo.jpg"
-            : "assets/logos/darkSplashlogo.jpeg"),
+            ? "assets/logos/ELightLogo.png"
+            : "assets/logos/backElogo.png"),
       ),
       const SizedBox(height: 5),
       Text(

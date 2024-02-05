@@ -48,13 +48,19 @@ dependencies:
   readmore: ^2.2.0
   flutter_rating_bar:
   flutter_native_splash: ^2.3.9
+  lottie: ^3.0.0
+  connectivity_plus: ^5.0.2
+  network_manager:
+
+#  Utility packages_info
+
 
 
 # Firebase dependencies
-  firebase_auth: ^4.17.3
-  firebase_core: ^2.25.3
   cloud_firestore: ^4.15.3
+  firebase_auth: ^4.17.3
   firebase_database: ^10.4.4
+  firebase_storage: ^11.6.4
 
 
 
