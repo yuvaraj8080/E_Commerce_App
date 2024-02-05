@@ -11,7 +11,7 @@ class UserRepository extends GetxController {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  ///FUNCTION TO SAVE USER DATE TO FIRESTRE
+  ///FUNCTION TO SAVE USER DATE TO FIREST0RE
 
   Future<void> saveUserRecord(UserModel user) async {
     try {
@@ -26,6 +26,7 @@ class UserRepository extends GetxController {
       throw "Something went wrong, Please try again";
     }
   }
+
 }
 
 

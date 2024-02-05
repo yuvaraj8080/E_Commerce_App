@@ -74,7 +74,7 @@ class TSignupForm extends StatelessWidget {
                     prefixIcon:Icon(Iconsax.password_check),
                     suffixIcon:IconButton(
                         onPressed:() => controller.hidePassword.value = !controller.hidePassword.value,
-                        icon:Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye_slash))
+                        icon:Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye))
                 ),
               validator:(value) => TValidator.validatePassword(value),
 
@@ -83,6 +83,7 @@ class TSignupForm extends StatelessWidget {
 
 
           ///  Term Condition Checkbox
+          const SizedBox(height:10),
           Row(children:[
             SizedBox(height:24,width:24,child:Obx(() => Checkbox(value:controller.privacyPolicy.value,
                 onChanged: (value)=>controller.privacyPolicy.value = !controller.privacyPolicy.value))),
@@ -93,7 +94,7 @@ class TSignupForm extends StatelessWidget {
             Text(" Term of use",style:Theme.of(context).textTheme.bodyMedium!.apply(
                 color: dark? TColors.primaryColor :Colors.blueAccent)),
           ]),
-          const SizedBox(height:10),
+          const SizedBox(height:15),
 
           /// Sign Up Button Create Account button
           SizedBox(width:double.infinity,

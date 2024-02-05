@@ -1,20 +1,26 @@
 
+import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
+import 'package:ecommerceapp/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../common/widgets.Login_Signup/success_Screee/sucess_screen.dart';
 import '../Login/login.dart';
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({super.key, this.email});
+
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+
+    final controller = Get.put(VerifyEmailController());
+
     return Scaffold(
         
       appBar: AppBar(
           automaticallyImplyLeading: false,
           actions:[
-        IconButton(onPressed: ()=>Get.offAll(()=> const LoginScreen()), icon:const Icon(CupertinoIcons.clear)),
+        IconButton(onPressed: ()=>AuthenticationRepository.instance.logout(), icon:const Icon(CupertinoIcons.clear)),
       ]),
       body: SingleChildScrollView(
         child:Padding(padding: const EdgeInsets.only(top:100,right:32,left:32,bottom: 32),
@@ -28,6 +34,8 @@ class VerifyEmailScreen extends StatelessWidget {
             /// title ans subtitle
             Text("Verify your email address!",style:Theme.of(context).textTheme.headlineMedium,),
             const SizedBox(height:20),
+            Text(email??"",style:Theme.of(context).textTheme.labelLarge,textAlign:TextAlign.center),
+            SizedBox(height:8),
             Text("Congratulations! your Account Awaits: Verify Your Email to Start Shopping and Experience a world of Unrivaled Deals ans Personalized Offers",
             style:Theme.of(context).textTheme.labelMedium,
             ),
@@ -36,18 +44,13 @@ class VerifyEmailScreen extends StatelessWidget {
 
           /// Calling the Successfully Verification Screen and Arguments
            SizedBox(width:double.infinity,child: ElevatedButton(
-               onPressed:()=>Get.to(()=> const SuccessScreen(
-                 image:"assets/images/animations/emailVerificatation1.png",
-                 title:"Congratulation! Your account successfully Created!",
-                 subtitle: "Welcome to Your Ultimates Shopping Destinations: Your Account Created, Unleash the joy of Seamless Online Shopping!",
-               )),
-
+               onPressed:()=>  controller.checkEmailVerificationStatus(),
 
                ///  Buttons and TextButtons
                child:const SizedBox(width: double.infinity,
                    child: Center(child: Text("Continue"))))),
            const SizedBox(height:20),
-           SizedBox(width:double.infinity,child: TextButton(onPressed:(){}, child:const Text("Resend Email")))
+           SizedBox(width:double.infinity,child: TextButton(onPressed:()=>controller.sendEmailVerification(), child:const Text("Resend Email")))
 
               ])
         ),

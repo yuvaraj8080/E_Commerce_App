@@ -28,8 +28,7 @@ class SignupController extends GetxController{
      try {
        //START LOADING
        TFullScreenLoader.openLoadingDialog(
-           "We are processing your information...",
-           "assets/images/animations/doneEmail.webp");
+           "We are processing your information...","assets/images/animations/emailVerification.jpg");
 
        ///CHECK INTERNET CONNECTIVITY
        final isConnected = await NetworkManager.instance.isConnected();
@@ -83,7 +82,7 @@ class SignupController extends GetxController{
            message: "Your Account has been Created! Verify email to Continue.");
 
        // MOVE TO VERIFY EMAIL SCREEN
-       Get.to(() => const VerifyEmailScreen());
+       Get.to(() =>  VerifyEmailScreen(email:email.text.trim()));
 
      }
     catch(e){
