@@ -36,8 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   iconsax: ^0.0.8
-  get: ^4.6.6
-  get_storage:
   http:
   logger:
   url_launcher:
@@ -52,8 +50,11 @@ dependencies:
   connectivity_plus: ^5.0.2
   network_manager:
 
-#  Utility packages_info
 
+# State management
+  get: ^4.6.6
+  get_storage:
+  shared_preferences:
 
 
 # Firebase dependencies

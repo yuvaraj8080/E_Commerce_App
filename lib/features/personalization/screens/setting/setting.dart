@@ -1,3 +1,5 @@
+
+
 import 'package:ecommerceapp/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/custom_shapes/curved_edges.dart/primary_header_controller.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
@@ -8,6 +10,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets.Login_Signup/list_Tile/setting_menu_tile.dart';
 import '../../../../common/widgets.Login_Signup/list_Tile/user_profile.dart';
+import '../../../../data/repositories/authentication-repository.dart';
 import '../../../../utils/constants/colors.dart';
 import '../profile/profile.dart';
 
@@ -68,7 +71,7 @@ class SettingScreen extends StatelessWidget {
                 ///--------LOGOUT BUTTON---------
                 const SizedBox(height:10),
                 SizedBox(
-                  width: double.infinity,child:OutlinedButton(onPressed:(){},child:const Text("Logout")),
+                  width: double.infinity,child:OutlinedButton(onPressed:()=>AuthenticationRepository.instance.logout(),child:const Text("Logout")),
                 ),
               ])
               )

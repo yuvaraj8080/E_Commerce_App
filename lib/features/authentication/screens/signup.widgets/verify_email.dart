@@ -4,7 +4,6 @@ import 'package:ecommerceapp/features/authentication/controllers/signup/verify_e
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../Login/login.dart';
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key, this.email});
 
