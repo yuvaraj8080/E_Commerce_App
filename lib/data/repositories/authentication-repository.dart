@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../exception_handling/handle_exception_file.dart';
 
@@ -100,8 +101,31 @@ class AuthenticationRepository extends GetxController{
 
   /// [EMAIL VERIFICATION] - MAIL VERIFICATION
   Future<void> sendEmailVerification() async {
+  }
+
+
+  ///[ REAUTHENTICATE] - REAUTHENTICATE USER
+
+
+  ///-------------------FEDERATED IDENTITY & SOCIAL SIGN IN ------------------]
+
+  ///[GoogleSignInAuthentication] ---- GOOGLE
+
+  Future<UserCredential?> signInWithGoogle() async{
      try{
-       await _auth.currentUser?.sendEmailVerification();
+
+       //TRIGGER THE AUTHENTICATION FLOW
+       final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+       //OBTAIN THE AUTH DETAILS FROM THE REQUEST
+       final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+
+       // create a new credential
+       final credentials = GoogleAuthProvider.credential(
+         accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+       // ONCE SIGNED IN, RETURN THE USERCREDENTIAL
+       return await _auth.signInWithCredential(credentials);
      }
      on FirebaseAuthException catch (e){
        throw TFirebaseAuthException(e.code).message;
@@ -120,14 +144,11 @@ class AuthenticationRepository extends GetxController{
      }
   }
 
-
-  ///[ REAUTHENTICATE] - REAUTHENTICATE USER
-
-
   ///[Logout]- VALID FOR ANY AUTHENTICATION.
 
   Future <void> logout() async {
      try{
+       await GoogleSignIn().signOut();
        await FirebaseAuth.instance.signOut();
        Get.offAll(()=> const LoginScreen());
      }

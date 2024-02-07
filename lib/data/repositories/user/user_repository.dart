@@ -9,6 +9,7 @@ import '../../../utils/User_Model/user_model.dart';
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
 
+
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   ///FUNCTION TO SAVE USER DATE TO FIREST0RE

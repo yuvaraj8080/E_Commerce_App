@@ -1,4 +1,7 @@
+import 'package:ecommerceapp/features/authentication/screens/Login/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../utils/constants/colors.dart';
 
@@ -9,13 +12,15 @@ class TSocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+    final controller = Get.put(LoginController());
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
         decoration: BoxDecoration(
             border: Border.all(color: TColors.grey),
             borderRadius: BorderRadius.circular(50)),
         child: IconButton(
-            onPressed: () {},
+            onPressed: ()=> controller.googleSignIn(),
             icon: const Image(
                 width: 30,
                 height: 30,
