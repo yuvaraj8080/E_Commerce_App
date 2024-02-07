@@ -1,11 +1,14 @@
+import 'package:ecommerceapp/features/authentication/controllers/forget_password_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Login/login.dart';
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key, required this.email});
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,9 @@ class ResetPassword extends StatelessWidget {
                     const Image(image: AssetImage("assets/images/animations/emailVerificatation1.png")),
                     const SizedBox(height:50),
 
-                    /// title ans subtitle
+                    ///Email, title ans subtitle
+                    Text(email,style:Theme.of(context).textTheme.bodyMedium,textAlign:TextAlign.center),
+                    const SizedBox(height:8),
                     Text("Password Reset Email Sent",style:Theme.of(context).textTheme.headlineMedium,),
                     const SizedBox(height:20),
                     Text("Your Account Security is Our Priority! We've Sent you a Secure link to safety change Your Password and Keep your Account Protected.",
@@ -42,7 +47,9 @@ class ResetPassword extends StatelessWidget {
 
                         ///  Buttons and TextButtons
                     const SizedBox(height:20),
-                    SizedBox(width:double.infinity,child: TextButton(onPressed:(){}, child:const Text("Resend Email")))
+                    SizedBox(width:double.infinity,
+                        child: TextButton(onPressed:()=>Get.offAll(()=> ForgetPasswordController.instance.resendPasswordResetEmail(email)),
+                        child:const Text("Resend Email")))
                   ])
           ),
         )
