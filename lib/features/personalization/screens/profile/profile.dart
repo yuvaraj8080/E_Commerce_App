@@ -1,14 +1,18 @@
 import 'package:ecommerceapp/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/images/t_circular_image.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
-import 'package:ecommerceapp/features/personalization/screens/profile/widget/profile_menudart.dart';
+import 'package:ecommerceapp/features/personalization/controllers/user_controller.dart';
+import 'package:ecommerceapp/features/personalization/screens/profile/widget/change_name.dart';
+import 'package:ecommerceapp/features/personalization/screens/profile/widget/profile_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar:const TAppBar(showBackArrow:true,title:Text("Profile")),
 
@@ -33,23 +37,23 @@ class ProfileScreen extends StatelessWidget {
             const TSectionHeading(title:"Profile Inforamation",showActionButton:false),
             const SizedBox(height:8),
 
-            TProfileMenu(title:"Name",value:"YUVARAJ DEKHANE",onPressed:(){}),
-            TProfileMenu(title:"Username",value:"yuvaraj@8080",onPressed:(){}),
+            TProfileMenu(title:"Name",value:controller.user.value.fullName,onPressed:()=>Get.to(()=>const ChangeName())),
+            TProfileMenu(title:"Username",value:controller.user.value.username,onPressed:(){}),
 
              ///-----HEADING PERSONAL INFORMATION-------
 
             const TSectionHeading(title:"Personal Information",showActionButton:false),
             const SizedBox(height:8),
 
-            TProfileMenu(title:"User ID", value:"565758",icon:Iconsax.copy,onPressed:(){}),
-            TProfileMenu(title:"E-Mail", value:"yuvarajdekhane8080@gmail.com",onPressed:(){}),
-            TProfileMenu(title:"Phone NO:", value:"8080737803",onPressed:(){}),
-            TProfileMenu(title:"Gender", value:"Male",onPressed:(){}),
+            TProfileMenu(title:"User ID", value:controller.user.value.id,icon:Iconsax.copy,onPressed:(){}),
+            TProfileMenu(title:"E-Mail", value:controller.user.value.email,onPressed:(){}),
+            TProfileMenu(title:"Phone NO:", value:controller.user.value.phoneNumber,onPressed:(){}),
+            TProfileMenu(title:"Gender",value:"Male",onPressed:(){}),
             TProfileMenu(title:"DOB", value:"21/07/2003",onPressed:(){}),
             const Divider(),
             const SizedBox(height:10),
             Center(child: TextButton(
-              onPressed:(){},child:const Text("Close Account",style:TextStyle(color:Colors.red)),
+              onPressed:() => controller.deleteAccountWarningPopup(),child:const Text("Close Account",style:TextStyle(color:Colors.red)),
             ))
           ]
         )

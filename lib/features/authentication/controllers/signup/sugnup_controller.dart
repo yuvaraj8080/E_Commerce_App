@@ -2,10 +2,12 @@ import 'package:ecommerceapp/common/NetworkManager/network_manager.dart';
 import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
 import 'package:ecommerceapp/data/repositories/user/user_repository.dart';
 import 'package:ecommerceapp/features/authentication/screens/signup.widgets/verify_email.dart';
+import 'package:ecommerceapp/navigation_menu.dart';
 import 'package:ecommerceapp/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/widgets.Login_Signup/loaders/snackbar_loader.dart';
+import '../../../../common/widgets.Login_Signup/success_Screee/sucess_screen.dart';
 import '../../../../utils/User_Model/user_model.dart';
 
 class SignupController extends GetxController{

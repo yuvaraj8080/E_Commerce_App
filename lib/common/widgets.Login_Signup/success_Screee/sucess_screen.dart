@@ -1,7 +1,10 @@
 import 'package:ecommerceapp/features/authentication/screens/Login/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../data/repositories/authentication-repository.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key, required this.image, required this.title, required this.subtitle, required this.onPressed,});
@@ -12,6 +15,10 @@ class SuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            actions:[
+            ]),
         body: SingleChildScrollView(
           child:Padding(padding: const EdgeInsets.only(top:130,right:32,left:32,bottom: 32),
               child:Column(

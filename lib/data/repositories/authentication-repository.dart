@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/data/repositories/user/user_repository.dart';
 import 'package:ecommerceapp/features/authentication/screens/Login/login.dart';
 import 'package:ecommerceapp/features/authentication/screens/onBoarding/onboarding.dart';
 import 'package:ecommerceapp/features/authentication/screens/signup.widgets/verify_email.dart';
@@ -19,6 +20,9 @@ class AuthenticationRepository extends GetxController{
   final _auth = FirebaseAuth.instance;
 
 
+  // GET AUTHENTICATED USER DATA
+  User? get authUser => _auth.currentUser;
+
 
   /// CALLED FROM MAIN DART ON APP LAUNCH
    @override
@@ -32,25 +36,26 @@ class AuthenticationRepository extends GetxController{
    ///----FUNCTION TO SHOW RELEVANT SCREEN
   screenRedirect() async {
     final user = _auth.currentUser;
-     //LOCAL STORAGE
-     if(user != null){
-       if(user.emailVerified){
-         Get.offAll(()=> const NavigationMenu());
-       }
-       else{
-         Get.offAll(()=> VerifyEmailScreen(email: _auth.currentUser?.email,));
-       }
-     }
-     else{
-       ///---LOCAL STORAGE---
-       deviceStorage.writeIfNull("IsFirstTime",true);
+    if (user != null) {
+      // User is signed in
+      if (user.emailVerified) {
+        // Email is verified, navigate to the main screen
+        Get.offAll(() => const NavigationMenu());
+      } else {
+        // Email is not verified, navigate to the VerifyEmailScreen
+        Get.offAll(() => VerifyEmailScreen(email: user.email!));
+      }
+    } else {
+      // No user is signed in
+      deviceStorage.writeIfNull("IsFirstTime", true);
 
-       /// CHECK IF IT'S THE FIRST TIME LAUNCHING THE APP
-       deviceStorage.read("IsFirstTime") != true
-           ? Get.offAll(()=> const LoginScreen())
-           : Get.offAll(const OnBoardingScreen());
-     }
+      // Check if it's the first time launching the app
+      deviceStorage.read("IsFirstTime") != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(const OnBoardingScreen());
+    }
   }
+
 
   ///-------------EMAIL & PASSWORD SIGN-IN--------------------
 
@@ -128,9 +133,36 @@ class AuthenticationRepository extends GetxController{
 
 
   ///[ REAUTHENTICATE] - REAUTHENTICATE USER
+  Future<void> reAuthenticateWithEmailAndPassword(String email, String password) async{
+     try{
+       // CREATE A CREDENTIAL
+       AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+
+       // REAUTHENTICATE
+       await _auth.currentUser!.reauthenticateWithCredential(credential);
+
+     } on FirebaseAuthException catch (e){
+       throw TFirebaseAuthException(e.code).message;
+     }
+     on FirebaseException catch (e){
+       throw TFirebaseException(e.code).message;
+     }
+     on FormatException catch (_){
+       throw TFormException();
+     }
+     on PlatformException catch (e){
+       throw TPlatformException(e.code).message;
+     }
+     catch(e){
+       throw "Something went wrong, Please try again";
+     }
+  }
+
 
 
   ///-------------------FEDERATED IDENTITY & SOCIAL SIGN IN ------------------]
+
+
 
   ///[GoogleSignInAuthentication] ---- GOOGLE
 
@@ -176,6 +208,30 @@ class AuthenticationRepository extends GetxController{
        Get.offAll(()=> const LoginScreen());
      }
        on FirebaseAuthException catch (e){
+       throw TFirebaseAuthException(e.code).message;
+     }
+     on FirebaseException catch (e){
+       throw TFirebaseException(e.code).message;
+     }
+     on FormatException catch (_){
+       throw TFormException();
+     }
+     on PlatformException catch (e){
+       throw TPlatformException(e.code).message;
+     }
+     catch(e){
+       throw "Something went wrong, Please try again";
+     }
+  }
+
+
+  ///  DELETE USER - REMOVE USER AUTH AND FIRESTORE ACCOUNT
+  Future<void> deleteAccount() async {
+     try{
+       await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+       await _auth.currentUser?.delete();
+     }
+     on FirebaseAuthException catch (e){
        throw TFirebaseAuthException(e.code).message;
      }
      on FirebaseException catch (e){

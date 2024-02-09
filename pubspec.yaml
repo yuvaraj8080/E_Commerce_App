@@ -49,6 +49,9 @@ dependencies:
   lottie: ^3.0.0
   connectivity_plus: ^5.0.2
   network_manager:
+  shimmer:
+  firebase_core:
+  firebase_app_check:
 
 
 # State management

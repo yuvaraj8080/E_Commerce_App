@@ -1,69 +1,57 @@
 import 'dart:async';
-
-import 'package:ecommerceapp/common/widgets.Login_Signup/success_Screee/sucess_screen.dart';
 import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-
-import '../../../../common/widgets.Login_Signup/loaders/snackbar_loader.dart';
-
+import '../../../../common/widgets.Login_Signup/success_Screee/sucess_screen.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
-
-  ///SEND EMAIL WHENEVER VERIFY SCREEN APPEARS & GET TIMER FOR AUTO REDIRECT
-
-@override
-  void onInit(){
-  sendEmailVerification();
-  setTimerForAutoRedirect();
-  super.onInit();
-}
-
-/// SEND EMAIL VERIFICATION LINK
-
-sendEmailVerification() async {
-  try{
-    await AuthenticationRepository.instance.sendEmailVerification();
-    TLoaders.successSnackBar(title:"Email Sent",message:"Please Check Your inbox and Verify your emil.");
-  }catch(e){
-    TLoaders.errorSnackBar(title:'Oh Snap',message:e.toString());
+  @override
+  void onInit() {
+    sendEmailVerification();
+    setTimerForAutoRedirect();
+    super.onInit();
   }
-}
 
-/// TIMER TO AUTOMATICALLY REDIRECT ON EMAIL VERIFICATION
-  setTimerForAutoRedirect(){
-  Timer.periodic(const Duration(seconds:1), (timer) async{
-    await FirebaseAuth.instance.currentUser?.reload();
-    final user = FirebaseAuth.instance.currentUser;
-    if(user?.emailVerified ?? false){
-      timer.cancel();
-      Get.offAll(
-              () =>  SuccessScreen(
-                  image:"assets/images/animations/emailVerificatation1.png",
-                  title:"Congratulation!",
-                  subtitle:"Your Email Successfully Verified",
-                onPressed:() =>AuthenticationRepository.instance.screenRedirect(),
-              )
-      );
+  // Send email verification link
+  sendEmailVerification() async {
+    try {
+      await AuthenticationRepository.instance.sendEmailVerification();
+    } catch (e) {
+      print("Error sending email verification: $e");
     }
-  });
   }
 
-/// MANUALLY CHECK IF EMAIL VERIFIED
-  /// MANUALLY CHECK IF EMAIL VERIFIED
-  checkEmailVerificationStatus() async{
+  // Set timer for automatic redirection on email verification
+  setTimerForAutoRedirect() {
+    Timer.periodic(const Duration(seconds:10), (timer) async {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null) {
+        await currentUser.reload();
+        if (currentUser.emailVerified) {
+          timer.cancel();
+          showSuccessScreen();
+        }
+      }
+    });
+  }
+
+  // Manually check if email verified
+  checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
-    if(currentUser != null && currentUser.emailVerified){
-      Get.off(
-              () =>  SuccessScreen(
-            image:"assets/images/animations/emailVerificatation1.png",
-            title:"Congratulation!",
-            subtitle:"Your Email Successfully Verified",
-            onPressed:() =>AuthenticationRepository.instance.screenRedirect()
-          )
-      );
+    if (currentUser != null && currentUser.emailVerified) {
+      showSuccessScreen();
     }
+  }
+
+  // Show success screen after email verification
+  void showSuccessScreen() {
+    Get.offAll(() => SuccessScreen(
+      image: "assets/images/animations/emailVerificatation1.png",
+      title: "Congratulations!",
+      subtitle: "Your Email Successfully Verified",
+      onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+    ));
   }
 }
