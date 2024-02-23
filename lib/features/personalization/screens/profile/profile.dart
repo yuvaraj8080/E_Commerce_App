@@ -1,9 +1,12 @@
+import 'dart:ffi';
+
 import 'package:ecommerceapp/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/images/t_circular_image.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
 import 'package:ecommerceapp/features/personalization/controllers/user_controller.dart';
 import 'package:ecommerceapp/features/personalization/screens/profile/widget/change_name.dart';
 import 'package:ecommerceapp/features/personalization/screens/profile/widget/profile_menu.dart';
+import 'package:ecommerceapp/utils/shimmer_circular_Indicator/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -25,9 +28,17 @@ class ProfileScreen extends StatelessWidget {
             ///-----PROFILE PICTURE--------k
             SizedBox(
               width:double.infinity,
-              child:Column(children:[
-                const TCircularImage(image:"assets/user/UserImge.png",width:100,height:100),
-                TextButton(onPressed:(){}, child:const Text("Change Profile Picture"))
+              child:Column(
+                  children:[
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty? networkImage :"assets/user/UserImge.png";
+                      return controller.imageUploading.value
+                      ? const TShimmerEffect(width:80, height: 80)
+                      :TCircularImage(image:image,width:100,height:100,isNetworkImage:networkImage.isNotEmpty);
+
+                    }),
+                TextButton(onPressed:() => controller.uploadUserProfilePicture(), child:const Text("Change Profile Picture"))
               ])
             ),
 

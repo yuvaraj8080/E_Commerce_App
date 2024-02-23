@@ -1,10 +1,6 @@
-import 'package:ecommerceapp/features/authentication/screens/Login/login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../../data/repositories/authentication-repository.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key, required this.image, required this.title, required this.subtitle, required this.onPressed,});

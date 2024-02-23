@@ -43,7 +43,7 @@ class AuthenticationRepository extends GetxController{
         Get.offAll(() => const NavigationMenu());
       } else {
         // Email is not verified, navigate to the VerifyEmailScreen
-        Get.offAll(() => VerifyEmailScreen(email: user.email!));
+        Get.offAll(() => VerifyEmailScreen(email:_auth.currentUser?.email));
       }
     } else {
       // No user is signed in
@@ -106,6 +106,24 @@ class AuthenticationRepository extends GetxController{
 
   /// [EMAIL VERIFICATION] - MAIL VERIFICATION
   Future<void> sendEmailVerification() async{
+    try{
+     await _auth.currentUser?.sendEmailVerification();
+    }
+    on FirebaseAuthException catch (e){
+      throw TFirebaseAuthException(e.code).message;
+    }
+    on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }
+    on FormatException catch (_){
+      throw TFormException();
+    }
+    on PlatformException catch (e){
+      throw TPlatformException(e.code).message;
+    }
+    catch(e){
+      throw "Something went wrong, Please try again";
+    }
   }
 
 

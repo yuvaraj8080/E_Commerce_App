@@ -7,7 +7,6 @@ import 'package:ecommerceapp/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/widgets.Login_Signup/loaders/snackbar_loader.dart';
-import '../../../../common/widgets.Login_Signup/success_Screee/sucess_screen.dart';
 import '../../../../utils/User_Model/user_model.dart';
 
 class SignupController extends GetxController{
@@ -30,7 +29,7 @@ class SignupController extends GetxController{
      try {
        //START LOADING
        TFullScreenLoader.openLoadingDialog(
-           "We are processing your information...","assets/images/animations/emailVerification.jpg");
+           "We are processing your information...","assets/images/animations/loading.json");
 
        ///CHECK INTERNET CONNECTIVITY
        final isConnected = await NetworkManager.instance.isConnected();
@@ -84,7 +83,7 @@ class SignupController extends GetxController{
            message: "Your Account has been Created! Verify email to Continue.");
 
        // MOVE TO VERIFY EMAIL SCREEN
-       Get.to(() =>  VerifyEmailScreen(email:email.text.trim()));
+       Get.to(() => VerifyEmailScreen(email:email.text.trim()));
 
      }
     catch(e){

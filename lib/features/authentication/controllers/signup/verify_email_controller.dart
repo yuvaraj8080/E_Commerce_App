@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../../../../common/widgets.Login_Signup/success_Screee/sucess_screen.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
+  ///SEND EMAIL VERIFICATION VERIFY SCREEN APPEAR & SET TIMER FOR AUTO REDIRECT
   @override
   void onInit() {
     sendEmailVerification();
@@ -19,20 +21,25 @@ class VerifyEmailController extends GetxController {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
     } catch (e) {
-      print("Error sending email verification: $e");
+      if (kDebugMode) {
+        print("Error sending email verification: $e");
+      }
     }
   }
 
   // Set timer for automatic redirection on email verification
   setTimerForAutoRedirect() {
-    Timer.periodic(const Duration(seconds:10), (timer) async {
-      final currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null) {
-        await currentUser.reload();
-        if (currentUser.emailVerified) {
-          timer.cancel();
-          showSuccessScreen();
-        }
+    Timer.periodic(const Duration(seconds: 1), (timer) async {
+      await FirebaseAuth.instance.currentUser?.reload();
+      final user = FirebaseAuth.instance.currentUser;
+      if (user?.emailVerified ?? false) {
+        timer.cancel();
+        Get.off(() => SuccessScreen(
+            image: "assets/images/animations/doneEmail.webp",
+            title: "Your Account Successfully Created!",
+            subtitle: "Welcome to your Ultimate shopping Destination: your Account is Created, Unleash the jay of Seamless Online Shopping",
+            onPressed: () =>
+                AuthenticationRepository.instance.screenRedirect()));
       }
     });
   }
@@ -48,10 +55,10 @@ class VerifyEmailController extends GetxController {
   // Show success screen after email verification
   void showSuccessScreen() {
     Get.offAll(() => SuccessScreen(
-      image: "assets/images/animations/emailVerificatation1.png",
-      title: "Congratulations!",
-      subtitle: "Your Email Successfully Verified",
-      onPressed: () => AuthenticationRepository.instance.screenRedirect(),
-    ));
+          image: "assets/images/animations/emailVerificatation1.png",
+          title: "Congratulations!",
+          subtitle: "Your Email Successfully Verified",
+          onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+        ));
   }
 }

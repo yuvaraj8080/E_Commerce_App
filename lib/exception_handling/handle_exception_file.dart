@@ -61,16 +61,20 @@ class TPlatformException implements Exception {
 
 class AuthExceptionHandler {
   static String handleException(dynamic e) {
-    if (e is FirebaseAuthException) {
-      return TFirebaseAuthException(e.code).message;
-    } else if (e is FirebaseException) {
-      return TFirebaseException(e.code).message;
-    } else if (e is FormatException) {
-      return TFormException().message;
-    } else if (e is PlatformException) {
-      return TPlatformException(e.code).message;
-    } else {
-      return "Something went wrong, Please try again";
+    try {
+      if (e is FirebaseAuthException) {
+        return TFirebaseAuthException(e.code).message;
+      } else if (e is FirebaseException) {
+        return TFirebaseException(e.code).message;
+      } else if (e is FormatException) {
+        return TFormException().message;
+      } else if (e is PlatformException) {
+        return TPlatformException(e.code).message;
+      } else {
+        return "Something went wrong, Please try again";
+      }
+    } catch (error) {
+      return "An unexpected error occurred";
     }
   }
 }

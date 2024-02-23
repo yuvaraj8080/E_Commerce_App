@@ -6,7 +6,6 @@ import 'package:iconsax/iconsax.dart';
 
 import 'features/personalization/screens/setting/setting.dart';
 import 'features/shop/screens/home/widgets/home.dart';
-
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
