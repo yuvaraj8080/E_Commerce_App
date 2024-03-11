@@ -1,5 +1,5 @@
 
-import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
+import 'package:ecommerceapp/data/repositories/authentication/authentication-repository.dart';
 import 'package:ecommerceapp/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

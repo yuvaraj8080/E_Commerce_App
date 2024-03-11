@@ -10,7 +10,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets.Login_Signup/list_Tile/setting_menu_tile.dart';
 import '../../../../common/widgets.Login_Signup/list_Tile/user_profile.dart';
-import '../../../../data/repositories/authentication-repository.dart';
+import '../../../../data/repositories/authentication/authentication-repository.dart';
 import '../../../../utils/constants/colors.dart';
 import '../profile/profile.dart';
 

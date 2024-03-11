@@ -2,7 +2,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
+import 'package:ecommerceapp/data/repositories/authentication/authentication-repository.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/services.dart';
@@ -35,7 +35,7 @@ class UserRepository extends GetxController {
   }
 
   //  FUNCTION TO FETCH USER DETAIL BASED ON USER ID
-  Future<UserModel> fetchUserRecord() async {
+  Future<UserModel> fetchUserDetails() async {
     try {
       final documentSnapshot = await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).get();
       if(documentSnapshot.exists){
@@ -121,7 +121,6 @@ Future<String> uploadImage(String path, XFile image) async{
       throw "Something went wrong, Please try again";
     }
   }
-
 }
 
 

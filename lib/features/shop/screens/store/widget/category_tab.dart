@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/common/widgets.Login_Signup/Products_cart/product_card_vetical.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/layout/grid_layout.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
+import 'package:ecommerceapp/features/shop/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets.Login_Signup/brands/brand_show_case.dart';
@@ -8,7 +9,9 @@ import '../../../../../common/widgets.Login_Signup/brands/brand_show_case.dart';
 
 
 class TCategoryTab extends StatelessWidget {
-  const TCategoryTab({super.key});
+  const TCategoryTab({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

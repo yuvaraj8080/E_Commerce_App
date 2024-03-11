@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
+import 'package:ecommerceapp/data/repositories/authentication/authentication-repository.dart';
 import 'package:ecommerceapp/data/repositories/user/user_repository.dart';
 import 'package:ecommerceapp/features/authentication/screens/Login/login.dart';
 import 'package:ecommerceapp/features/personalization/screens/profile/widget/re_authenticate_user_login_form.dart';
@@ -136,7 +136,7 @@ Future<void> saveUserRecord(UserCredential? userCredential) async{
   ///  RE-AUTHENTICATE BEFORE DELETING
   Future<void> reAuthenticateEmailAndPasswordUser() async{
     try{
-      TFullScreenLoader.openLoadingDialog("Processing","assets/images/animations/doneEmail.webp");
+      TFullScreenLoader.openLoadingDialog("Processing","assets/images/animations/loading.json");
 
       /// CHECK INTERNET
       final isConnected = await NetworkManager.instance.isConnected();

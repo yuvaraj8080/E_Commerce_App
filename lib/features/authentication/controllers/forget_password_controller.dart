@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/common/NetworkManager/network_manager.dart';
-import 'package:ecommerceapp/data/repositories/authentication-repository.dart';
+import 'package:ecommerceapp/data/repositories/authentication/authentication-repository.dart';
 import 'package:ecommerceapp/features/authentication/screens/password_configuration/reset_password.dart';
 import 'package:ecommerceapp/utils/popups/full_screen_loader.dart';
 import 'package:flutter/cupertino.dart';

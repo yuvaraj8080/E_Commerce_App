@@ -22,17 +22,18 @@ class THomeAppBar extends StatelessWidget {
                   .textTheme
                   .labelMedium!
                   .apply(color: TColors.grey)),
-          Obx(() {
-            if(controller.profileLoading.value){
-              return const TShimmerEffect(width:80,height:15);
-            }else{
-              return Text(controller.user.value.fullName,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .apply(color: TColors.grey));
-            }
-          },
+          Obx(
+            () {
+              if (controller.profileLoading.value) {
+                return const TShimmerEffect(width: 80, height: 15);
+              } else {
+                return Text(controller.user.value.fullName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .apply(color: TColors.grey));
+              }
+            },
           ),
         ]),
         actions: [

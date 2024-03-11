@@ -3,6 +3,7 @@ import 'package:ecommerceapp/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/custom_shapes/container/search_Container.dart.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/layout/grid_layout.dart';
 import 'package:ecommerceapp/common/widgets.Login_Signup/texts/section_heading.dart';
+import 'package:ecommerceapp/features/shop/controllers/category_controller.dart';
 import 'package:ecommerceapp/features/shop/screens/store/widget/category_tab.dart';
 import 'package:flutter/material.dart';
 import '../../../../common/widgets.Login_Signup/Products_cart/TBrandCard.dart';
@@ -15,8 +16,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length:categories.length,
       child: Scaffold(
         appBar: TAppBar(
             title: Text("Store",
@@ -64,27 +66,13 @@ class StoreScreen extends StatelessWidget {
                             ])),
 
                     /// ------- Scrolling TabBar hare ---------
-                    bottom: const TTabBar(
-                      tabs: [
-                        Tab(child: Text("Sports")),
-                        Tab(child: Text("Furniture")),
-                        Tab(child: Text("Electronics")),
-                        Tab(child: Text("Clothes")),
-                        Tab(child: Text("Cosmetics")),
-                      ],
-                    ))
+                    bottom:  TTabBar(tabs:categories.map((category) => Tab(child:Text(category.name))).toList()))
               ];
             },
 
             ///--------TABBAR VIEW
-            body: const TabBarView(children: [
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-            ])),
-      ),
-    );
+            body:TabBarView(children:categories.map((category) => TCategoryTab(category:category)).toList()),
+        )),
+      );
   }
 }

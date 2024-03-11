@@ -122,6 +122,7 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/images/animations/
     - assets/icons/categories/
+    - assets/images/images/
     - assets/images/products/
     - assets/user/
     - assets/images/banners/
