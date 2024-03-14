@@ -41,11 +41,7 @@ class HomeScreen extends StatelessWidget {
             children: [
 
               ///  Promo Slider -- Tutorial
-              const TPromoSlider(banners: [
-                  "assets/images/banners/homeBanner1.jpg",
-                  "assets/images/banners/homeBanner2.png",
-                  "assets/images/banners/homeBanner1.jpg"]
-              ),
+              const TPromoSlider(),
               const SizedBox(height:10),
 
               ///---  Heading

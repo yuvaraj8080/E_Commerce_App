@@ -36,23 +36,26 @@ class CategoryRepository extends GetxController {
 
   ///   UPLOAD CATEGORIES TO HE CLOUD FIREBASE
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
-    try{
+    try {
       // upload all the categories along with their Images
       final storage = Get.put(TFirebaseStorageService());
 
       //Loop through each category
-      for(var category in categories){
+      for (var category in categories) {
         // UPLOAD ALL THE CATEGORIES ALONG WITH THEIR IMAGES
         final file = await storage.getImageDataFromAssets(category.image);
         // GET IMAGE AND ITS URL
-        final url = await storage.uploadImageData("Categories",file,category.name);
+        final url =
+            await storage.uploadImageData("Categories", file, category.name);
         // ASSIGN URL TO CATEGORY IMAGE ATTRIBUTE
         category.image = url;
         // STORE CATEGORY IN FIRESTORE
-        await _db.collection("Categories").doc(category.id).set(category.toJson());
+        await _db
+            .collection("Categories")
+            .doc(category.id)
+            .set(category.toJson());
       }
-    }
-    on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
       throw TFormException();

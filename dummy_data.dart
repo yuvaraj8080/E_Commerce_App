@@ -1,7 +1,14 @@
+import 'package:ecommerceapp/features/shop/models/banner_model.dart';
 import 'package:ecommerceapp/features/shop/models/category_model.dart';
-import 'package:flutter/material.dart';
+import 'package:ecommerceapp/routes/routes.dart';
+
+
 
 class TDummyData{
+  ///---- BANNERS------
+  static final List<BannerModel> banners = [
+    BannerModel(imageUrl: '', targetScreen:TRoutes.order, active: false),
+  ];
 
 
   ///-----LIST OF ALL CATEGORIES----

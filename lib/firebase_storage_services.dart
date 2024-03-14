@@ -28,7 +28,7 @@ class TFirebaseStorageService extends GetxController {
     }
   }
 
-  ///UPLOAD IMAGE USING IMAGDATA ON CLOUD FIREBASE STORAGE
+  ///UPLOAD IMAGE USING IMAGEDATA ON CLOUD FIREBASE STORAGE
 ///RETURN  THEN DOWNLOAD URL OF THE UPLOAD IMAGE
   Future<String> uploadImageData(String path,Uint8List image ,String name )async{
     try{
