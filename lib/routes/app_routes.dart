@@ -11,7 +11,6 @@ import 'package:ecommerceapp/features/shop/screens/product_reviews/product_revie
 import 'package:ecommerceapp/features/shop/screens/store/store.dart';
 import 'package:ecommerceapp/routes/routes.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
-
 import '../features/shop/screens/home/widgets/home.dart';
 
 class AppRoutes{
